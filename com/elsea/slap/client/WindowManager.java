@@ -2,7 +2,6 @@ package com.elsea.slap.client;
 
 import java.util.HashMap;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class WindowManager {
@@ -34,8 +33,6 @@ public class WindowManager {
 	}
 	
 	public void setCurrentPanel(String name) {
-		
-		System.out.println("Changing panel.");
 		
 		CURRENT_PANEL = PANELS.get(name);
 		WINDOW.setCurrentPanel(CURRENT_PANEL);
