@@ -1,10 +1,12 @@
 package com.elsea.slap.client;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -106,13 +108,15 @@ public class JButtonPanel extends JPanel {
 	
 	public void createComponent() {
 			
-			FlowLayout layout = new FlowLayout();
-			layout.setAlignment(FlowLayout.CENTER);
-			
-			this.setLayout(layout);
-			this.setBorder(null);
-
-			this.add(L_TEXT);
+		BorderLayout layout = new BorderLayout();
+		this.setLayout(layout);
+		
+		Box box = Box.createHorizontalBox();
+		box.add(Box.createHorizontalGlue());
+		box.add(L_TEXT);
+		box.add(Box.createHorizontalGlue());
+		
+		this.add(box, BorderLayout.CENTER);
 		
 	}
 	
