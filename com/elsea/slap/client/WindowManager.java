@@ -17,7 +17,8 @@ public class WindowManager {
 	}
 	
 	public void setBounds(int length, int width) {
-		WINDOW.setBounds(100, 100, length, width);
+		WINDOW.setBoundaries(length, width);
+		WINDOW.updateBoundaries();
 	}
 	
 	public void refreshWindow() {
@@ -26,7 +27,8 @@ public class WindowManager {
 			WINDOW = new Window();
 			return;
 		}
-
+		
+		WINDOW.updateBoundaries();
 		if (CURRENT_PANEL != null) WINDOW.setCurrentPanel(CURRENT_PANEL);
 		WINDOW.setVisible(true);
 		
