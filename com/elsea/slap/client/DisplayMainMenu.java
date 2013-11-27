@@ -1,22 +1,18 @@
 package com.elsea.slap.client;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.Color;
 import javax.swing.JLabel;
-import java.awt.GridLayout;
+import javax.swing.JPanel;
 
-public class DisplayMainMenu extends JFrame {
+public class DisplayMainMenu extends JPanel{
 	private static final long serialVersionUID = 1L;
-	
-	private JPanel CONTENT_PANE;
 
 	/**
 	 * TESTING UI
@@ -37,20 +33,15 @@ public class DisplayMainMenu extends JFrame {
 
 	public DisplayMainMenu() {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 450);
-		
-		CONTENT_PANE = new JPanel();
-		CONTENT_PANE.setBorder(null);
-		setContentPane(CONTENT_PANE);
-		CONTENT_PANE.setLayout(new BorderLayout(0, 0));
+		setBorder(null);
+		setLayout(new BorderLayout(0, 0));
 		
 		JPanel P_BOTTOM_BAR = new JPanel();
 		P_BOTTOM_BAR.setBackground(new Color(250, 128, 114));
-		CONTENT_PANE.add(P_BOTTOM_BAR, BorderLayout.SOUTH);
+		add(P_BOTTOM_BAR, BorderLayout.SOUTH);
 		
 		JPanel P_CONTENT_HOLDER = new JPanel();
-		CONTENT_PANE.add(P_CONTENT_HOLDER, BorderLayout.CENTER);
+		add(P_CONTENT_HOLDER, BorderLayout.CENTER);
 		P_CONTENT_HOLDER.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		JPanel P_CONTENT_1 = new JPanel();
@@ -75,7 +66,8 @@ public class DisplayMainMenu extends JFrame {
 
 			@Override
 			public void definition() {
-				System.out.println("Clicked.");
+				Program.WINDOW_MANAGER.addPanel("m2", new DisplayMainMenu());
+				Program.WINDOW_MANAGER.setCurrentPanel("m2");
 			}
 			
 		});
@@ -109,7 +101,7 @@ public class DisplayMainMenu extends JFrame {
 		
 		P_CONTENT_2.add(Box.createRigidArea(new Dimension(10,10)));
 		
-		JButtonPanel BP_SETTINGS = new JButtonPanel("Tutorial", new Action() {
+		JButtonPanel BP_SETTINGS = new JButtonPanel("Settings", new Action() {
 
 			@Override
 			public void definition() {

@@ -1,0 +1,58 @@
+package com.elsea.slap.client;
+
+import java.util.HashMap;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class WindowManager {
+	
+	private HashMap<String, JPanel> PANELS;
+	private Window WINDOW;
+	private JPanel CURRENT_PANEL;
+	
+	public WindowManager() {
+		
+		PANELS = new HashMap<String, JPanel>();
+		refreshWindow();
+	}
+	
+	public void setBounds(int length, int width) {
+		WINDOW.setBounds(100, 100, length, width);
+	}
+	
+	public void refreshWindow() {
+		
+		if (WINDOW == null) {
+			WINDOW = new Window();
+			return;
+		}
+
+		if (CURRENT_PANEL != null) WINDOW.setCurrentPanel(CURRENT_PANEL);
+		WINDOW.setVisible(true);
+		
+	}
+	
+	public void setCurrentPanel(String name) {
+		
+		System.out.println("Changing panel.");
+		
+		CURRENT_PANEL = PANELS.get(name);
+		WINDOW.setCurrentPanel(CURRENT_PANEL);
+		refreshWindow();
+		
+	}
+	
+	public void addPanel(String identifier, JPanel panel) {
+		PANELS.put(identifier, panel);
+	}
+	
+	public void removePanel(String identifier) {
+		PANELS.remove(identifier);
+	}
+	
+	public Window getWindow() {
+		return WINDOW;
+	}
+
+}
