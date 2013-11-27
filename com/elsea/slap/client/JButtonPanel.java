@@ -31,10 +31,7 @@ public class JButtonPanel extends JPanel {
 	
 	public JButtonPanel(String text, Action actionOnClick) {
 		
-		System.out.println("Created.");
-		
 		PANEL = this;
-		
 		ACTION_CLICK = actionOnClick;
 		initiateListeners();
 		
@@ -63,7 +60,6 @@ public class JButtonPanel extends JPanel {
 			public void mouseEntered(MouseEvent e) {
 				
 				if (DO_COLOR_HOVER) {
-					System.out.println("Hover.");
 					PANEL.setBackground(COLOR_HOVER);
 				}
 				
@@ -73,7 +69,6 @@ public class JButtonPanel extends JPanel {
 			public void mouseExited(MouseEvent e) {
 				
 				if (DO_COLOR_HOVER) {
-					System.out.println("Exit.");
 					PANEL.setBackground(COLOR_GENERAL);
 				}
 				
@@ -83,7 +78,6 @@ public class JButtonPanel extends JPanel {
 			public void mousePressed(MouseEvent e) {
 				
 				if (DO_COLOR_PRESS) {
-					System.out.println("Pressed.");
 					PANEL.setBackground(COLOR_PRESSED);
 				}
 				
@@ -93,7 +87,6 @@ public class JButtonPanel extends JPanel {
 			public void mouseReleased(MouseEvent e) {
 				
 				if (DO_COLOR_PRESS) {
-					System.out.println("Released.");
 					PANEL.setBackground(COLOR_GENERAL);
 				}
 				

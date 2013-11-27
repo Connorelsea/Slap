@@ -3,7 +3,6 @@ package com.elsea.slap.client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 
 import javax.swing.Box;
@@ -13,23 +12,6 @@ import javax.swing.JPanel;
 
 public class DisplayMainMenu extends JPanel{
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * TESTING UI
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DisplayMainMenu frame = new DisplayMainMenu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 
 	public DisplayMainMenu() {
 		

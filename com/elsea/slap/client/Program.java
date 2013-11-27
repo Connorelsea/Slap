@@ -9,7 +9,6 @@ public class Program {
 	public Program() {
 		
 		loadHelpers();
-		
 		initiateProgram();
 		
 	}
