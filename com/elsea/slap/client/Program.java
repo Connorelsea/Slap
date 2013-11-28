@@ -25,6 +25,7 @@ public class Program {
 		WINDOW_MANAGER.addPanel("LOADING", DISPLAY_LOADING);
 		WINDOW_MANAGER.setBounds(600, 600);
 		WINDOW_MANAGER.setCurrentPanel("LOADING");
+		WINDOW_MANAGER.refreshWindow();
 		
 		//WINDOW_MANAGER.addPanel("MAIN_MENU", DISPLAY_MAIN_MENU);
 		//WINDOW_MANAGER.setBounds(850, 400);

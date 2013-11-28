@@ -32,20 +32,6 @@ public class WindowManager {
 	}
 	
 	/**
-	 *  <b>setBounds()</b></br>
-	 *  <i>Fires Window methods necessary to change and update the size of a Window.</i></br>
- 	 *  
- 	 *  @version Slap 0.1
- 	 *  
-	 *  @param length Length of the window.
-	 *  @param width Width of the window.
-	 */
-	public void setBounds(int length, int width) {
-		WINDOW.setBoundaries(length, width);
-		WINDOW.updateBoundaries();
-	}
-	
-	/**
 	 *  <b>createWindow()</b></br>
 	 *  <i>Creates the Window object that will be used </i></br>
  	 *  
@@ -70,19 +56,6 @@ public class WindowManager {
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
 		
-	}
-	
-	/**
-	 *  <b>setCurrentPanel()</b></br>
-	 *  <i>Changes the variable that holds the String that will eventually be set
-	 *  as the title of the Window that this Window Manager cares for.</i></br>
- 	 *  
- 	 *  @version Slap 0.1
- 	 *  
- 	 *  @param title string that will be set to title variable
-	 */
-	public void setTitle(String title) {
-			TITLE = title;
 	}
 	
 	/**
@@ -135,6 +108,14 @@ public class WindowManager {
 			PANELS.remove(identifier);
 		}
 		
+	}
+	
+	public void setBounds(int length, int width) {
+		WINDOW.setBoundaries(length, width);
+	}
+	
+	public void setTitle(String title) {
+		TITLE = title;
 	}
 	
 	public void removeAllPanels() {

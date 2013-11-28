@@ -12,21 +12,8 @@ package com.elsea.slap.client;
  */
 public abstract class Action {
 	
-	/**
-	 *  <b>definition()</b></br>
-	 *  <i>An abstracted method where the user will define various actions.</i></br>
- 	 *  
- 	 *  @version Slap 0.1
-	 */
 	public abstract void definition();
 	
-	/**
-	 *  <b>fire()</b></br>
-	 *  <i>Included for style and readability. This fires the definition method,
-	 *  and in turn "fires" the action that is being held by this object.</i></br>
- 	 *  
- 	 *  @version Slap 0.1
-	 */
 	public void fire() {
 		definition();
 	}
