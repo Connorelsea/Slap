@@ -60,6 +60,8 @@ public class Window extends JFrame {
 				BOUNDS_LENGTH,
 				BOUNDS_WIDTH
 			);
+			this.setLocationRelativeTo(null);
+			
 		} else {
 			this.setBounds(10, 10, BOUNDS_LENGTH, BOUNDS_WIDTH);
 		}

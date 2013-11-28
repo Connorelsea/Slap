@@ -95,6 +95,7 @@ public class DisplayLoading extends WindowPanel {
 		
 		Program.WINDOW_MANAGER.sendProgressFinish();
 		Program.WINDOW_MANAGER.setBounds(1000, 650);
+		Program.WINDOW_MANAGER.setTitle("Elsea : Slap");
 		Program.WINDOW_MANAGER.refreshWindow();
 		
 	}
