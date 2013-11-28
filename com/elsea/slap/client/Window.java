@@ -36,6 +36,7 @@ public class Window extends JFrame {
 	 *  @param width Width of the window.
 	 */
 	public void setBoundaries(int length, int width) {
+		System.out.println("4");
 		BOUNDS_LENGTH = length;
 		BOUNDS_WIDTH = width;
 	}
@@ -48,7 +49,20 @@ public class Window extends JFrame {
  	 *  @version Slap 0.1
 	 */
 	public void updateBoundaries() {
-		this.setBounds(100, 100, BOUNDS_LENGTH, BOUNDS_WIDTH);
+		
+		System.out.println("5");
+		
+		if (Program.WINDOW_MANAGER != null) {
+			
+			this.setBounds(
+				Program.WINDOW_MANAGER.getScreenWidth() / 2 - this.getSize().width / 2,
+				Program.WINDOW_MANAGER.getScreenHeight() / 2 - this.getSize().height / 2,
+				BOUNDS_LENGTH,
+				BOUNDS_WIDTH
+			);
+		} else {
+			this.setBounds(10, 10, BOUNDS_LENGTH, BOUNDS_WIDTH);
+		}
 	}
 	
 	/**

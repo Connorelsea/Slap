@@ -1,5 +1,7 @@
 package com.elsea.slap.client;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.HashMap;
 
 /**
@@ -18,6 +20,10 @@ public class WindowManager {
 	private HashMap<String, WindowPanel> PANELS;
 	private Window WINDOW;
 	
+	private Dimension DIM_SCREEN;
+	private int HEIGHT;
+	private int WIDTH;
+	
 	private String CURRENT_PANEL_NAME;
 	private WindowPanel CURRENT_PANEL;
 	private String TITLE;
@@ -27,6 +33,15 @@ public class WindowManager {
 	private boolean TRACK_PROGRESS;
 	
 	public WindowManager() {
+		
+		System.out.println("1");
+		
+		DIM_SCREEN = Toolkit.getDefaultToolkit().getScreenSize();
+		HEIGHT = DIM_SCREEN.height;
+		WIDTH = DIM_SCREEN.width;
+		
+		System.out.println("2");
+		
 		PANELS = new HashMap<String, WindowPanel>();
 		createWindow();
 		refreshWindow();
@@ -39,7 +54,9 @@ public class WindowManager {
  	 *  @version Slap 0.1
 	 */
 	public void createWindow() {
+		System.out.println("3");
 		WINDOW = new Window();
+		WINDOW.setBoundaries(100, 100);
 	}
 	
 	/**
@@ -66,8 +83,9 @@ public class WindowManager {
 				}
 				
 				WINDOW.setCurrentPanel(CURRENT_PANEL);
+				WINDOW.setLocationRelativeTo(null);
 			}
-			
+
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
 		
@@ -189,6 +207,14 @@ public class WindowManager {
 	
 	public Window getWindow() {
 		return WINDOW;
+	}
+	
+	public int getScreenWidth() {
+		return WIDTH;
+	}
+	
+	public int getScreenHeight() {
+		return HEIGHT;
 	}
 
 }

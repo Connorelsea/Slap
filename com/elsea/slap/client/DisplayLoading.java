@@ -67,13 +67,13 @@ public class DisplayLoading extends WindowPanel {
 		LABEL.setText("Loading Image URLs...");
 		
 		Program.RESOURCE_MANAGER.addImage("LOGO", "res/images/LOGO.png");
-		Program.RESOURCE_MANAGER.addImage("CARD", "res/images/CARD.png");
 		
 		BAR.setValue(20);
 		
 		LABEL.setText("Loading necessary ImageIcons...");
 		
-		//Program.RESOURCE_MANAGER.loadImage("LOGO");
+		Program.RESOURCE_MANAGER.loadImage("LOGO");
+		Program.RESOURCE_MANAGER.loadImage("CARD");
 		
 		BAR.setValue(40);
 		
@@ -94,7 +94,7 @@ public class DisplayLoading extends WindowPanel {
 		BAR.setValue(80);
 		
 		Program.WINDOW_MANAGER.sendProgressFinish();
-		Program.WINDOW_MANAGER.setBounds(800, 500);
+		Program.WINDOW_MANAGER.setBounds(1000, 650);
 		Program.WINDOW_MANAGER.refreshWindow();
 		
 	}

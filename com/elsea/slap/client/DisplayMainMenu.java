@@ -40,10 +40,13 @@ public class DisplayMainMenu extends WindowPanel {
 		P_CONTENT_HOLDER.setLayout(new GridLayout(2, 1, 0, 0));
 		
 		JPanel P_CONTENT_1 = new JPanel();
+		Dimension d = new Dimension();
+		d.setSize(1000, 400);
+		P_CONTENT_1.setPreferredSize(d);
 		P_CONTENT_1.setOpaque(false);
 		P_CONTENT_HOLDER.add(P_CONTENT_1);
 		
-		JLabel L_LOGO = new JLabel("Logo Image Will Be Here");
+		JLabel L_LOGO = new JLabel(Program.RESOURCE_MANAGER.getImage("LOGO"));
 		P_CONTENT_1.add(L_LOGO);
 
 		Dimension DIM_BUTTON = new Dimension(200, 50);
@@ -52,6 +55,8 @@ public class DisplayMainMenu extends WindowPanel {
 		P_CONTENT_2.setOpaque(false);
 		P_CONTENT_2.setLayout(new BoxLayout(P_CONTENT_2, BoxLayout.Y_AXIS));
 		P_CONTENT_HOLDER.add(P_CONTENT_2);
+		
+		P_CONTENT_2.add(Box.createRigidArea(new Dimension(40, 40)));
 		
 		JButtonPanel BP_MULTIPLAYER = new JButtonPanel("Multiplayer", new Action() {
 
