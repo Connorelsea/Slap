@@ -9,6 +9,20 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ *  <b>JButtonPanel.class</b></br>
+ *  <i>A custom component that acts a single-colored, clickable JPanel.</i></br>
+ *  </br>
+ *  A custom component that acts a single-color, clickable JPanel.
+ *  The ability to change color during certain mouse actions, and
+ *  deactivate and activate the clickability of the panel are
+ *  supported.</br>
+ * 
+ * 	@creator Connor Elsea
+ *  @author Elsea Labs
+ *  @version Slap 0.1
+ *
+ */
 public class JButtonPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -29,6 +43,17 @@ public class JButtonPanel extends JPanel {
 	private Color COLOR_DEACTIVATED;
 	private Color COLOR_PRESSED;
 	
+	/**
+	 *  <b>JButtonPanel()</b></br>
+	 *  <i>The constructor for the JButtonPanel class. Various object
+	 *  from inside of the class are instantiated, and creation methods
+	 *  are fired upon the construction of JButtonPanel.</i></br>
+ 	 *  
+ 	 *  @version Slap 0.1
+ 	 *  
+	 *  @param text The text the panel should display.
+	 *  @param actionOnClick The action that the button should do when clicked.
+	 */
 	public JButtonPanel(String text, Action actionOnClick) {
 		
 		PANEL = this;
@@ -42,6 +67,13 @@ public class JButtonPanel extends JPanel {
 		
 	}
 	
+	/**
+	 *  <b>initiateListeners()</b></br>
+	 *  <i>Create the MouseListener to be applied to the panel. Color changing
+	 *  as well as clicking actions are set up in this method.</i></br>
+ 	 *  
+ 	 *  @version Slap 0.1
+	 */
 	public void initiateListeners() {
 		
 		MOUSE_LISTENER = new MouseListener() {
@@ -98,6 +130,12 @@ public class JButtonPanel extends JPanel {
 		
 	}
 	
+	/**
+	 *  <b>addImage()</b></br>
+	 *  <i>Creates a panel and centers specified text inside of it.</i></br>
+ 	 *  
+ 	 *  @version Slap 0.1
+	 */
 	public void createComponent() {
 			
 		BorderLayout layout = new BorderLayout();

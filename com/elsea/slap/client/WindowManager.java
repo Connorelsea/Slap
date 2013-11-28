@@ -4,6 +4,15 @@ import java.util.HashMap;
 
 import javax.swing.JPanel;
 
+/**
+ *  <b>WindowManager.class</b></br>
+ *  <i>A class used to manage a Window and the panels that will be used with it.</i></br>
+ * 
+ * 	@creator Connor Elsea
+ *  @author Elsea Labs
+ *  @version Slap 0.1
+ *
+ */
 public class WindowManager {
 	
 	private HashMap<String, JPanel> PANELS;
