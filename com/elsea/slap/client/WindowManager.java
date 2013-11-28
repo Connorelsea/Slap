@@ -85,7 +85,7 @@ public class WindowManager {
 				WINDOW.setCurrentPanel(CURRENT_PANEL);
 				WINDOW.setLocationRelativeTo(null);
 			}
-
+			
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
 		
