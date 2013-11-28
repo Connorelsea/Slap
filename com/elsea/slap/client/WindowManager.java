@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.HashMap;
 
+import javax.swing.SwingUtilities;
+
 /**
  *  <b>WindowManager.class</b></br>
  *  <i>A class used to manage a Window and the panels that will be used with it.
@@ -20,6 +22,8 @@ public class WindowManager {
 	private HashMap<String, WindowPanel> PANELS;
 	private Window WINDOW;
 	
+	private Log LOG;
+	
 	private Dimension DIM_SCREEN;
 	private int HEIGHT;
 	private int WIDTH;
@@ -34,13 +38,17 @@ public class WindowManager {
 	
 	public WindowManager() {
 		
-		System.out.println("1");
+		LOG = new Log();
+		LOG.setSection("WindowManager");
+		LOG.useSubSection(false);
+		
+		LOG.log("Measuring screen.");
 		
 		DIM_SCREEN = Toolkit.getDefaultToolkit().getScreenSize();
 		HEIGHT = DIM_SCREEN.height;
 		WIDTH = DIM_SCREEN.width;
 		
-		System.out.println("2");
+		LOG.log("Creating HashMaps.");
 		
 		PANELS = new HashMap<String, WindowPanel>();
 		createWindow();
@@ -54,9 +62,9 @@ public class WindowManager {
  	 *  @version Slap 0.1
 	 */
 	public void createWindow() {
-		System.out.println("3");
+		
+		LOG.log("Creating Window.");
 		WINDOW = new Window();
-		WINDOW.setBoundaries(100, 100);
 	}
 	
 	/**
@@ -73,21 +81,34 @@ public class WindowManager {
 			
 			if (CURRENT_PANEL != null) {
 				
+				LOG.log("Current panel exists. Setting up information.");
+				
 				if (CURRENT_PANEL.getTrackProgress() == true) {
 					
+					LOG.log("Progress tracking turned on, setting next panel.");
 					setTrackProgress(true);
 					setNextPanel(CURRENT_PANEL.getNextPanelName());
 					
 				} else {
+					LOG.log("Progress tracking turned off.");
 					setTrackProgress(false);
 				}
 				
+				LOG.log("Setting current panel.");
 				WINDOW.setCurrentPanel(CURRENT_PANEL);
-				WINDOW.setLocationRelativeTo(null);
 			}
 			
+			LOG.log("Setting window attributes and turning visible.");
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
+			
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					LOG.log("Forcing window to move to centered position.");
+					WINDOW.setLocationRelativeTo(null);
+				}
+			});
 		
 	}
 	
@@ -103,10 +124,16 @@ public class WindowManager {
 	public void setCurrentPanel(String name) {
 		
 		if (PANELS.containsKey(name)) {
+			
+			LOG.log("Setting current panel to \"" + name + "\".");
 			CURRENT_PANEL = PANELS.get(name);
 			CURRENT_PANEL_NAME = name;
+			
 		} else {
-			System.out.println("[Error] Panel does not exist in the HashMap.");
+			
+			LOG.setSubSection("Error");
+			LOG.log("Attempted current panel does not exist in the HashMap.");
+			LOG.useSubSection(false);
 		}
 		
 	}
@@ -121,6 +148,8 @@ public class WindowManager {
  	 *  @param panel The JPanel to be added to the HashMap.
 	 */
 	public void addPanel(String identifier, WindowPanel panel) {
+		
+		LOG.log("Adding panel named \"" + identifier + "\" to the HashMap.");
 		PANELS.put(identifier, panel);
 	}
 	
@@ -136,8 +165,14 @@ public class WindowManager {
 	public void removePanel(String identifier) {
 		
 		if (CURRENT_PANEL_NAME == identifier) {
-			System.out.println("[Error] Cannot remove the panel currently being used.");
+			
+			LOG.setSubSection("Error");
+			LOG.log("Denied the attempt to remove a panel that is currently in use.");
+			LOG.useSubSection(false);
+			
 		} else {
+			
+			LOG.log("Removing panel \"" + identifier + "\"");
 			PANELS.remove(identifier);
 		}
 		
@@ -171,7 +206,12 @@ public class WindowManager {
 	public void setNextPanel(String identifier) {
 		
 		if (PANELS.containsKey(identifier) == false) {
-			System.out.println("[Warning] HashMap does not contain a panel with specified name.");
+			
+			LOG.setSubSection("Warning");
+			LOG.log("HashMap does not contain a panel with specified name." +
+					" Allowing addition. anyways.");
+			LOG.useSubSection(false);
+		
 		}
 		NEXT_PANEL_NAME = identifier;
 	}
@@ -186,8 +226,8 @@ public class WindowManager {
 	 */
 	public void sendProgressFinish() {
 		
+		LOG.log("Progress finished signal recieved.");
 		setCurrentPanel(NEXT_PANEL_NAME);
-
 		NEXT_PANEL_NAME = "";
 		setTrackProgress(false);
 		

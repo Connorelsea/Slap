@@ -26,6 +26,14 @@ public class Window extends JFrame {
 	private int BOUNDS_LENGTH;
 	private int BOUNDS_WIDTH;
 	
+	private Log LOG;
+	
+	public Window() {
+		LOG = new Log();
+		LOG.setSection("Window");
+		LOG.useSubSection(false);
+	}
+	
 	/**
 	 *  <b>setBoundaries()</b></br>
 	 *  <i>Sets the variables that hold the (Integer) size of the Window.</i></br>
@@ -36,7 +44,6 @@ public class Window extends JFrame {
 	 *  @param width Width of the window.
 	 */
 	public void setBoundaries(int length, int width) {
-		System.out.println("4");
 		BOUNDS_LENGTH = length;
 		BOUNDS_WIDTH = width;
 	}
@@ -50,7 +57,7 @@ public class Window extends JFrame {
 	 */
 	public void updateBoundaries() {
 		
-		System.out.println("5");
+		LOG.log("Updating boundaries.");
 		
 		if (Program.WINDOW_MANAGER != null) {
 			
@@ -75,6 +82,7 @@ public class Window extends JFrame {
  	 *  @version Slap 0.1
 	 */
 	public void createContentPane() {
+		LOG.log("Creating the content panel.");
 		CONTENT_PANE = new JPanel();
 		CONTENT_PANE.setBorder(null);
 		CONTENT_PANE.setLayout(new BorderLayout());
@@ -92,6 +100,7 @@ public class Window extends JFrame {
 	 */
 	public void setCurrentPanel(JPanel panel) {
 		
+		LOG.log("Setting the current panel.");
 		createContentPane();
 		this.setContentPane(CONTENT_PANE);
 		this.getContentPane().add(panel, BorderLayout.CENTER);

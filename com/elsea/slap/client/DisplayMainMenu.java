@@ -31,6 +31,7 @@ public class DisplayMainMenu extends WindowPanel {
 		setLayout(new BorderLayout(0, 0));
 		
 		JPanel P_BOTTOM_BAR = new JPanel();
+		P_BOTTOM_BAR.setPreferredSize(new Dimension(30, 30));
 		P_BOTTOM_BAR.setBackground(THEME_BUTTONS.getColor("general"));
 		add(P_BOTTOM_BAR, BorderLayout.SOUTH);
 		
@@ -62,8 +63,7 @@ public class DisplayMainMenu extends WindowPanel {
 
 			@Override
 			public void definition() {
-				Program.WINDOW_MANAGER.addPanel("m2", new DisplayMainMenu());
-				Program.WINDOW_MANAGER.setCurrentPanel("m2");
+				
 			}
 			
 		});
