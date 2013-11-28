@@ -17,13 +17,8 @@ public class Program {
 	
 	public void initiateProgram() {
 		
-		System.out.println("HERE 2");
-		
-		
 		DISPLAY_LOADING = new DisplayLoading();
 		DISPLAY_LOADING.setNextPanelName("MAIN_MENU");
-		
-		System.out.println("HERE 3");
 		
 		WINDOW_MANAGER.addPanel("LOADING", DISPLAY_LOADING);
 		WINDOW_MANAGER.setBounds(600, 600);
@@ -33,8 +28,6 @@ public class Program {
 	}
 	
 	public void loadHelpers() {
-		
-		System.out.println("HERE");
 		
 		WINDOW_MANAGER = new WindowManager();
 		RESOURCE_MANAGER = new ResourceManager();

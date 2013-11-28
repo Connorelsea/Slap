@@ -82,7 +82,7 @@ public class DisplayMainMenu extends WindowPanel {
 
 			@Override
 			public void definition() {
-				System.out.println("Clicked.");
+				
 			}
 			
 		});
@@ -101,7 +101,7 @@ public class DisplayMainMenu extends WindowPanel {
 
 			@Override
 			public void definition() {
-				System.out.println("Clicked.");
+				
 			}
 			
 		});

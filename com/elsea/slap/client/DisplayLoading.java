@@ -50,14 +50,10 @@ public class DisplayLoading extends WindowPanel {
 			}
 			
 		});
-		
-		System.out.println("DONE LOADING.");
 
 	}
 	
 	public void loadItems() {
-		
-		System.out.println("Loading items.");
 		
 		//check for updates
 		LABEL.setText("Checking for updates...");

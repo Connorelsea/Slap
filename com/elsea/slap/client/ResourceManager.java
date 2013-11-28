@@ -27,10 +27,16 @@ public class ResourceManager {
 	private ClassLoader CL;
 	private URL CURRENT_URL;
 	
+	private Log LOG;
+	
 	public ResourceManager() {
+		
 		IMAGE_URLS = new HashMap<String, String>();
 		IMAGES = new HashMap<String, ImageIcon>();
 		CL = this.getClass().getClassLoader();
+		LOG = new Log();
+		LOG.setSection("ResourceManager");
+		LOG.useSubSection(false);
 	}
 	
 	/**
@@ -43,8 +49,8 @@ public class ResourceManager {
 	 *  @param path The path to the specific image.
 	 */
 	public void addImage(String name, String path) {
-		System.out.println("[Image] Adding URL \"" + name + "\" AT PATH \"" + path + "\"");
 		
+		LOG.log("Adding URL \"" + name + "\" AT PATH \"" + path + "\"");
 		IMAGE_URLS.put(name, path);
 	}
 	
@@ -74,7 +80,10 @@ public class ResourceManager {
 	public void loadImage(String name) {
 		
 		if (IMAGE_URLS.containsKey(name) != true) {
-			System.out.println("[Error] Image not stored as a URL. Cannot load. \"" + name + "\"");
+			
+			LOG.setSubSection("Error");
+			LOG.log("Image not stored as a URL. Cannot load. \"" + name + "\"");
+			LOG.useSubSection(false);
 			return;
 		}
 		
@@ -85,7 +94,9 @@ public class ResourceManager {
 			IMAGES.put(name, imageIcon);
 			
 		} catch (Exception ex) {
-			System.out.println("[Error] Image could not be found. " + IMAGE_URLS.get(name));
+			LOG.setSubSection("Error");
+			LOG.log("Image could not be found. " + IMAGE_URLS.get(name));
+			LOG.useSubSection(false);
 		}
 		
 	}
@@ -101,7 +112,9 @@ public class ResourceManager {
 	public ImageIcon getImage(String name) {
 		
 		if (IMAGES.containsKey(name) != true) {
-			System.out.println("[Error] Image not found in ImageIcon cache.");
+			LOG.setSubSection("Error");
+			LOG.log("Image not found in ImageIcon cache.");
+			LOG.useSubSection(false);
 			return null;
 		}
 		
