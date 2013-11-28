@@ -10,7 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class DisplayMainMenu extends JPanel{
+public class DisplayMainMenu extends WindowPanel {
 	private static final long serialVersionUID = 1L;
 
 	public DisplayMainMenu() {

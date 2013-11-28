@@ -8,13 +8,15 @@ import java.awt.Graphics;
 
 import javax.swing.JProgressBar;
 
-public class DisplayLoading extends JPanel {
+public class DisplayLoading extends WindowPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JProgressBar BAR;
 	private ImageIcon BACKGROUND;
 	
 	public DisplayLoading() {
+		
+		this.setTrackProgress(true);
 		
 		setLayout(new BorderLayout(0, 0));
 		BAR = new JProgressBar();

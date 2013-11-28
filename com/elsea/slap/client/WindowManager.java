@@ -17,16 +17,19 @@ import javax.swing.JPanel;
  */
 public class WindowManager {
 	
-	private HashMap<String, JPanel> PANELS;
+	private HashMap<String, WindowPanel> PANELS;
 	private Window WINDOW;
-	private String CURRENT_PANEL_NAME;
-	private JPanel CURRENT_PANEL;
 	
+	private String CURRENT_PANEL_NAME;
+	private WindowPanel CURRENT_PANEL;
 	private String TITLE;
 	
+	private String NEXT_PANEL_NAME;
+
+	private boolean TRACK_PROGRESS;
+	
 	public WindowManager() {
-		
-		PANELS = new HashMap<String, JPanel>();
+		PANELS = new HashMap<String, WindowPanel>();
 		createWindow();
 		refreshWindow();
 	}
@@ -52,7 +55,21 @@ public class WindowManager {
 	public void refreshWindow() {
 		
 			WINDOW.updateBoundaries();
-			if (CURRENT_PANEL != null) WINDOW.setCurrentPanel(CURRENT_PANEL);
+			
+			if (CURRENT_PANEL != null) {
+				
+				if (CURRENT_PANEL.getTrackProgress() == true) {
+					
+					setTrackProgress(true);
+					setNextPanel(CURRENT_PANEL.getNextPanelName());
+					
+				} else {
+					setTrackProgress(false);
+				}
+				
+				WINDOW.setCurrentPanel(CURRENT_PANEL);
+			}
+			
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
 		
@@ -87,7 +104,7 @@ public class WindowManager {
  	 *  @param identifier Name that the panel will be called from now on.
  	 *  @param panel The JPanel to be added to the HashMap.
 	 */
-	public void addPanel(String identifier, JPanel panel) {
+	public void addPanel(String identifier, WindowPanel panel) {
 		PANELS.put(identifier, panel);
 	}
 	
@@ -107,6 +124,56 @@ public class WindowManager {
 		} else {
 			PANELS.remove(identifier);
 		}
+		
+	}
+	
+	/**
+	 *  <b>trackProgress()</b></br>
+	 *  <i>Makes the Window Manager check to see if the panel is "done."/i></br>
+ 	 *  
+ 	 *  @version Slap 0.1
+ 	 *  
+ 	 *  @param value To track progress or to not track progress.
+	 */
+	public void setTrackProgress(boolean value) {
+		TRACK_PROGRESS = value;
+	}
+	
+	public boolean isTrackingProgress() {
+		return TRACK_PROGRESS;
+	}
+	
+	/**
+	 *  <b>setNextPanel()</b></br>
+	 *  <i>Sets the panel that will become the current panel after the current panel
+	 *  is "done."</i></br>
+ 	 *  
+ 	 *  @version Slap 0.1
+ 	 *  
+ 	 *  @param identifier name of the panel to be added once progress is done.
+	 */
+	public void setNextPanel(String identifier) {
+		
+		if (PANELS.containsKey(identifier) == false) {
+			System.out.println("[Warning] HashMap does not contain a panel with specified name.");
+		}
+		NEXT_PANEL_NAME = identifier;
+	}
+	
+	/**
+	 *  <b>setNextPanel()</b></br>
+	 *  <i>Triggers to Window Manager to do actions that would be done upon
+	 *  completion of a panel's actions. This method should be fired by the
+	 *  current panel in order to alert the Window Manager that it is done.</i></br>
+ 	 *  
+ 	 *  @version Slap 0.1
+	 */
+	public void sendProgressFinish() {
+		
+		setCurrentPanel(NEXT_PANEL_NAME);
+
+		NEXT_PANEL_NAME = "";
+		setTrackProgress(false);
 		
 	}
 	

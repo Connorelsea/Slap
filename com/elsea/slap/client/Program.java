@@ -22,6 +22,8 @@ public class Program {
 		DISPLAY_MAIN_MENU = new DisplayMainMenu();
 		DISPLAY_LOADING = new DisplayLoading();
 		
+		DISPLAY_LOADING.setNextPanelName("MAIN_MENU");
+		
 		WINDOW_MANAGER.addPanel("LOADING", DISPLAY_LOADING);
 		WINDOW_MANAGER.setBounds(600, 600);
 		WINDOW_MANAGER.setCurrentPanel("LOADING");
