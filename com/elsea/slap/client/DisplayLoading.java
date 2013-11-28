@@ -21,7 +21,9 @@ public class DisplayLoading extends WindowPanel {
 	
 	public DisplayLoading() {
 		
-		System.out.println("LOADING.");
+		Program.RESOURCE_MANAGER.addImage("BACKGROUND_WOOD", "res/images/WOOD.jpg");
+		Program.RESOURCE_MANAGER.loadImage("BACKGROUND_WOOD");
+		BACKGROUND = Program.RESOURCE_MANAGER.getImage("BACKGROUND_WOOD");
 		
 		this.setTrackProgress(true);
 		
@@ -39,9 +41,6 @@ public class DisplayLoading extends WindowPanel {
 		BAR = new JProgressBar();
 		panel.add(BAR, BorderLayout.SOUTH);
 		BAR.setForeground(new Color(242, 72, 72));
-		
-		Program.RESOURCE_MANAGER.loadImage("BACKGROUND_WOOD");
-		BACKGROUND = Program.RESOURCE_MANAGER.getImage("BACKGROUND_WOOD");
 		
 		SwingUtilities.invokeLater(new Runnable() {
 
@@ -65,8 +64,18 @@ public class DisplayLoading extends WindowPanel {
 		BAR.setValue(10);
 		
 		//load images
-		LABEL.setText("Loading Images...");
-		BAR.setValue(25);
+		LABEL.setText("Loading Image URLs...");
+		
+		Program.RESOURCE_MANAGER.addImage("LOGO", "res/images/LOGO.png");
+		Program.RESOURCE_MANAGER.addImage("CARD", "res/images/CARD.png");
+		
+		BAR.setValue(20);
+		
+		LABEL.setText("Loading necessary ImageIcons...");
+		
+		//Program.RESOURCE_MANAGER.loadImage("LOGO");
+		
+		BAR.setValue(40);
 		
 		//load the rest of the menu panels
 		LABEL.setText("Loading the menu panels...");
@@ -74,11 +83,11 @@ public class DisplayLoading extends WindowPanel {
 		Program.DISPLAY_MAIN_MENU = new DisplayMainMenu();
 		Program.WINDOW_MANAGER.addPanel("MAIN_MENU", Program.DISPLAY_MAIN_MENU);
 		
-		BAR.setValue(50);
+		BAR.setValue(60);
 		
 		//load the menu
 		LABEL.setText("Loading menu...");
-		BAR.setValue(65);
+		BAR.setValue(70);
 		
 		//finalize
 		LABEL.setText("Finalizing...");

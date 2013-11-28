@@ -3,7 +3,9 @@ package com.elsea.slap.client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.Image;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -12,27 +14,12 @@ import javax.swing.JPanel;
 
 public class DisplayMainMenu extends WindowPanel {
 	private static final long serialVersionUID = 1L;
+	
+	private Image BACKGROUND;
 
 	public DisplayMainMenu() {
 		
-		setBorder(null);
-		setLayout(new BorderLayout(0, 0));
-		
-		JPanel P_BOTTOM_BAR = new JPanel();
-		P_BOTTOM_BAR.setBackground(new Color(250, 128, 114));
-		add(P_BOTTOM_BAR, BorderLayout.SOUTH);
-		
-		JPanel P_CONTENT_HOLDER = new JPanel();
-		add(P_CONTENT_HOLDER, BorderLayout.CENTER);
-		P_CONTENT_HOLDER.setLayout(new GridLayout(2, 1, 0, 0));
-		
-		JPanel P_CONTENT_1 = new JPanel();
-		P_CONTENT_HOLDER.add(P_CONTENT_1);
-		
-		JLabel L_LOGO = new JLabel("Logo Image Will Be Here");
-		P_CONTENT_1.add(L_LOGO);
-
-		Dimension DIM_BUTTON = new Dimension(200, 50);
+		BACKGROUND = Program.RESOURCE_MANAGER.getImage("BACKGROUND_WOOD").getImage();
 		
 		ColorTheme THEME_BUTTONS = new ColorTheme();
 		THEME_BUTTONS.addColor("general", new Color(242, 72, 72));
@@ -40,7 +27,29 @@ public class DisplayMainMenu extends WindowPanel {
 		THEME_BUTTONS.addColor("hover", new Color(249, 98, 98));
 		THEME_BUTTONS.addColor("deactivated", new Color(49, 19, 19));
 		
+		setBorder(null);
+		setLayout(new BorderLayout(0, 0));
+		
+		JPanel P_BOTTOM_BAR = new JPanel();
+		P_BOTTOM_BAR.setBackground(THEME_BUTTONS.getColor("general"));
+		add(P_BOTTOM_BAR, BorderLayout.SOUTH);
+		
+		JPanel P_CONTENT_HOLDER = new JPanel();
+		P_CONTENT_HOLDER.setOpaque(false);
+		add(P_CONTENT_HOLDER, BorderLayout.CENTER);
+		P_CONTENT_HOLDER.setLayout(new GridLayout(2, 1, 0, 0));
+		
+		JPanel P_CONTENT_1 = new JPanel();
+		P_CONTENT_1.setOpaque(false);
+		P_CONTENT_HOLDER.add(P_CONTENT_1);
+		
+		JLabel L_LOGO = new JLabel("Logo Image Will Be Here");
+		P_CONTENT_1.add(L_LOGO);
+
+		Dimension DIM_BUTTON = new Dimension(200, 50);
+		
 		JPanel P_CONTENT_2 = new JPanel();
+		P_CONTENT_2.setOpaque(false);
 		P_CONTENT_2.setLayout(new BoxLayout(P_CONTENT_2, BoxLayout.Y_AXIS));
 		P_CONTENT_HOLDER.add(P_CONTENT_2);
 		
@@ -99,6 +108,12 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_SETTINGS.setMaximumSize(DIM_BUTTON);
 		BP_SETTINGS.setMinimumSize(DIM_BUTTON);
 		P_CONTENT_2.add(BP_SETTINGS);
+		
+	}
+	
+	public void paintComponent(Graphics g) {
+		
+		g.drawImage(BACKGROUND, 0, 0, null);
 		
 	}
 

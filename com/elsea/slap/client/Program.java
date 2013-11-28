@@ -11,8 +11,6 @@ public class Program {
 	public Program() {
 		
 		loadHelpers();
-		loadResources();
-		
 		initiateProgram();
 		
 	}
@@ -23,18 +21,10 @@ public class Program {
 		DISPLAY_LOADING = new DisplayLoading();
 		DISPLAY_LOADING.setNextPanelName("MAIN_MENU");
 		
-		System.out.println("STARTING.");
-		
 		WINDOW_MANAGER.addPanel("LOADING", DISPLAY_LOADING);
 		WINDOW_MANAGER.setBounds(600, 600);
 		WINDOW_MANAGER.setCurrentPanel("LOADING");
 		WINDOW_MANAGER.refreshWindow();
-		
-		System.out.println("FINISHING.");
-		
-		//WINDOW_MANAGER.addPanel("MAIN_MENU", DISPLAY_MAIN_MENU);
-		//WINDOW_MANAGER.setBounds(850, 400);
-		//WINDOW_MANAGER.setCurrentPanel("MAIN_MENU");
 		
 	}
 	
@@ -42,12 +32,6 @@ public class Program {
 		
 		WINDOW_MANAGER = new WindowManager();
 		RESOURCE_MANAGER = new ResourceManager();
-		
-	}
-	
-	public void loadResources() {
-		
-		RESOURCE_MANAGER.addImage("BACKGROUND_WOOD", "res/images/WOOD.jpg");
 		
 	}
 

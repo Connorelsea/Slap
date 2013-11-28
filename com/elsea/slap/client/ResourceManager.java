@@ -43,6 +43,8 @@ public class ResourceManager {
 	 *  @param path The path to the specific image.
 	 */
 	public void addImage(String name, String path) {
+		System.out.println("[Image] Adding URL \"" + name + "\" AT PATH \"" + path + "\"");
+		
 		IMAGE_URLS.put(name, path);
 	}
 	
@@ -72,7 +74,7 @@ public class ResourceManager {
 	public void loadImage(String name) {
 		
 		if (IMAGE_URLS.containsKey(name) != true) {
-			System.out.println("[Error] Image not stored as a URL. Cannot load.");
+			System.out.println("[Error] Image not stored as a URL. Cannot load. \"" + name + "\"");
 			return;
 		}
 		
