@@ -2,8 +2,6 @@ package com.elsea.slap.client;
 
 import java.util.HashMap;
 
-import javax.swing.JPanel;
-
 /**
  *  <b>WindowManager.class</b></br>
  *  <i>A class used to manage a Window and the panels that will be used with it.

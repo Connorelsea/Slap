@@ -5,8 +5,8 @@ public class Program {
 	public static WindowManager WINDOW_MANAGER;
 	public static ResourceManager RESOURCE_MANAGER;
 	
-	private DisplayMainMenu DISPLAY_MAIN_MENU;
-	private DisplayLoading DISPLAY_LOADING;
+	public static DisplayMainMenu DISPLAY_MAIN_MENU;
+	public static DisplayLoading DISPLAY_LOADING;
 	
 	public Program() {
 		
@@ -19,15 +19,18 @@ public class Program {
 	
 	public void initiateProgram() {
 		
-		DISPLAY_MAIN_MENU = new DisplayMainMenu();
-		DISPLAY_LOADING = new DisplayLoading();
 		
+		DISPLAY_LOADING = new DisplayLoading();
 		DISPLAY_LOADING.setNextPanelName("MAIN_MENU");
+		
+		System.out.println("STARTING.");
 		
 		WINDOW_MANAGER.addPanel("LOADING", DISPLAY_LOADING);
 		WINDOW_MANAGER.setBounds(600, 600);
 		WINDOW_MANAGER.setCurrentPanel("LOADING");
 		WINDOW_MANAGER.refreshWindow();
+		
+		System.out.println("FINISHING.");
 		
 		//WINDOW_MANAGER.addPanel("MAIN_MENU", DISPLAY_MAIN_MENU);
 		//WINDOW_MANAGER.setBounds(850, 400);
