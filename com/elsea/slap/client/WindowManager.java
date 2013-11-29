@@ -25,15 +25,16 @@ public class WindowManager {
 	private Log LOG;
 	
 	private Dimension DIM_SCREEN;
-	private int HEIGHT;
-	private int WIDTH;
+	private int SCREEN_HEIGHT;
+	private int SCREEN_WIDTH;
+	private int BOUND_HEIGHT;
+	private int BOUND_WIDTH;
 	
 	private String CURRENT_PANEL_NAME;
 	private WindowPanel CURRENT_PANEL;
 	private String TITLE;
 	
 	private String NEXT_PANEL_NAME;
-
 	private boolean TRACK_PROGRESS;
 	
 	public WindowManager() {
@@ -45,8 +46,8 @@ public class WindowManager {
 		LOG.log("Measuring screen.");
 		
 		DIM_SCREEN = Toolkit.getDefaultToolkit().getScreenSize();
-		HEIGHT = DIM_SCREEN.height;
-		WIDTH = DIM_SCREEN.width;
+		SCREEN_HEIGHT = DIM_SCREEN.height;
+		SCREEN_WIDTH = DIM_SCREEN.width;
 		
 		LOG.log("Creating HashMaps.");
 		
@@ -99,6 +100,8 @@ public class WindowManager {
 			}
 			
 			LOG.log("Setting window attributes and turning visible.");
+			WINDOW.setBoundaries(BOUND_HEIGHT, BOUND_WIDTH);
+			WINDOW.updateBoundaries();
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
 			
@@ -213,6 +216,7 @@ public class WindowManager {
 			LOG.useSubSection(false);
 		
 		}
+		
 		NEXT_PANEL_NAME = identifier;
 	}
 	
@@ -233,12 +237,26 @@ public class WindowManager {
 		
 	}
 	
+	public boolean isProgresFinished() {
+		if (TRACK_PROGRESS == true) return false; else return true;
+	}
+	
+	
+	public void setIcon() {
+		//planned
+	}
+	
 	public void setBounds(int length, int width) {
-		WINDOW.setBoundaries(length, width);
+		BOUND_HEIGHT = length;
+		BOUND_WIDTH = width;
 	}
 	
 	public void setTitle(String title) {
 		TITLE = title;
+	}
+	
+	public String getTitle() {
+		return TITLE;
 	}
 	
 	public void removeAllPanels() {
@@ -250,11 +268,11 @@ public class WindowManager {
 	}
 	
 	public int getScreenWidth() {
-		return WIDTH;
+		return SCREEN_WIDTH;
 	}
 	
 	public int getScreenHeight() {
-		return HEIGHT;
+		return SCREEN_HEIGHT;
 	}
 
 }
