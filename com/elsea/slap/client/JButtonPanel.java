@@ -2,6 +2,7 @@ package com.elsea.slap.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -38,10 +39,14 @@ public class JButtonPanel extends JPanel {
 	private boolean DO_COLOR_HOVER = false;
 	private boolean DO_COLOR_PRESS = false;
 	
+	private Color COLOR_FOREGROUND;
 	private Color COLOR_GENERAL;
 	private Color COLOR_HOVER;
 	private Color COLOR_DEACTIVATED;
 	private Color COLOR_PRESSED;
+	
+	private Font FONT;
+	private int FONT_SIZE = 18;
 	
 	/**
 	 *  <b>JButtonPanel()</b></br>
@@ -62,8 +67,6 @@ public class JButtonPanel extends JPanel {
 		
 		TEXT = text;
 		L_TEXT = new JLabel(TEXT);
-		
-		createComponent();
 		
 	}
 	
@@ -143,7 +146,12 @@ public class JButtonPanel extends JPanel {
 		
 		Box box = Box.createHorizontalBox();
 		box.add(Box.createHorizontalGlue());
+		
+		L_TEXT.setFont(FONT);
+		System.out.println("FONT NAME: " + FONT.getName() + " , SIZE: " + FONT_SIZE);
+		L_TEXT.setFont(new Font(FONT.getName(), Font.PLAIN, FONT_SIZE));
 		box.add(L_TEXT);
+		
 		box.add(Box.createHorizontalGlue());
 		
 		this.add(box, BorderLayout.CENTER);
@@ -164,6 +172,11 @@ public class JButtonPanel extends JPanel {
 	
 	public boolean isColorPressedOn() {
 		return DO_COLOR_PRESS;
+	}
+	
+	public void setColorForeground(Color color) {
+		COLOR_FOREGROUND = color;
+		L_TEXT.setForeground(COLOR_FOREGROUND);
 	}
 	
 	public void setActivationLevel(boolean value) {
@@ -223,6 +236,14 @@ public class JButtonPanel extends JPanel {
 	
 	public Color getColorPressed() {
 		return COLOR_PRESSED;
+	}
+	
+	public void setFont(Font font) {
+		FONT = font;
+	}
+	
+	public void setFontSize(int i) {
+		FONT_SIZE = i;
 	}
 
 }

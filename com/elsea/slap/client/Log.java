@@ -30,6 +30,7 @@ public class Log {
 	}
 	
 	public void setSubSection(String sub) {
+		useSubSection(true);
 		SECTION_SUB = sub;
 	}
 	

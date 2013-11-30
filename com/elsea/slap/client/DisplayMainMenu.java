@@ -3,10 +3,15 @@ package com.elsea.slap.client;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -16,8 +21,44 @@ public class DisplayMainMenu extends WindowPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Image BACKGROUND;
+	private Font FONT;
+	
+	private Log LOG;
+	
+	public void loadFont() {
+		
+		LOG.setSubSection("Font");
+		LOG.log("Loading custom font.");
+		URL fontURL = this.getClass().getClassLoader().getResource("res/fonts/THIN.ttf");
+		
+		try {
+			
+			FONT = Font.createFont(Font.TRUETYPE_FONT, fontURL.openStream());
+			LOG.log("Done loading custom font.");
+			
+		} catch (FontFormatException e) {
+			
+			LOG.log("FontFormatException, can't use custom font. Using native font.");
+			FONT = Font.getFont(Font.SANS_SERIF);
+			e.printStackTrace();
+			
+		} catch (IOException e) {
+			
+			LOG.log("FontFormatException, can't use custom font. Using native font.");
+			FONT = Font.getFont(Font.SANS_SERIF);
+			e.printStackTrace();
+		}
+		
+		LOG.useSubSection(false);
+	}
 
 	public DisplayMainMenu() {
+		
+		LOG = new Log();
+		LOG.setSection("DisplayMainMenu");
+		LOG.useSubSection(false);
+		
+		loadFont();
 		
 		BACKGROUND = Program.RESOURCE_MANAGER.getImage("BACKGROUND_WOOD").getImage();
 		
@@ -71,10 +112,39 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_MULTIPLAYER.setColorPressed(THEME_BUTTONS.getColor("pressed"));
 		BP_MULTIPLAYER.setColorHover(THEME_BUTTONS.getColor("hover"));
 		BP_MULTIPLAYER.setColorDeactivated(THEME_BUTTONS.getColor("deactivated"));
+		BP_MULTIPLAYER.setColorForeground(Color.WHITE);
+		BP_MULTIPLAYER.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+		BP_MULTIPLAYER.setFont(FONT);
+		BP_MULTIPLAYER.setFontSize(20);
 		BP_MULTIPLAYER.turnOnColorFunctions();
 		BP_MULTIPLAYER.setMaximumSize(DIM_BUTTON);
 		BP_MULTIPLAYER.setMinimumSize(DIM_BUTTON);
+		BP_MULTIPLAYER.createComponent();
 		P_CONTENT_2.add(BP_MULTIPLAYER);
+		
+		P_CONTENT_2.add(Box.createRigidArea(new Dimension(10,10)));
+		
+		JButtonPanel BP_STATS = new JButtonPanel("Statistics", new Action() {
+
+			@Override
+			public void definition() {
+				
+			}
+			
+		});
+		BP_STATS.setColorGeneral(THEME_BUTTONS.getColor("general"));
+		BP_STATS.setColorPressed(THEME_BUTTONS.getColor("pressed"));
+		BP_STATS.setColorHover(THEME_BUTTONS.getColor("hover"));
+		BP_STATS.setColorDeactivated(THEME_BUTTONS.getColor("deactivated"));
+		BP_STATS.setColorForeground(Color.WHITE);
+		BP_STATS.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+		BP_STATS.setFont(FONT);
+		BP_STATS.setFontSize(20);
+		BP_STATS.turnOnColorFunctions();
+		BP_STATS.setMaximumSize(DIM_BUTTON);
+		BP_STATS.setMinimumSize(DIM_BUTTON);
+		BP_STATS.createComponent();
+		P_CONTENT_2.add(BP_STATS);
 		
 		P_CONTENT_2.add(Box.createRigidArea(new Dimension(10,10)));
 		
@@ -90,9 +160,14 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_TUTORIAL.setColorPressed(THEME_BUTTONS.getColor("pressed"));
 		BP_TUTORIAL.setColorHover(THEME_BUTTONS.getColor("hover"));
 		BP_TUTORIAL.setColorDeactivated(THEME_BUTTONS.getColor("deactivated"));
+		BP_TUTORIAL.setColorForeground(Color.WHITE);
+		BP_TUTORIAL.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+		BP_TUTORIAL.setFont(FONT);
+		BP_TUTORIAL.setFontSize(20);
 		BP_TUTORIAL.turnOnColorFunctions();
 		BP_TUTORIAL.setMaximumSize(DIM_BUTTON);
 		BP_TUTORIAL.setMinimumSize(DIM_BUTTON);
+		BP_TUTORIAL.createComponent();
 		P_CONTENT_2.add(BP_TUTORIAL);
 		
 		P_CONTENT_2.add(Box.createRigidArea(new Dimension(10,10)));
@@ -109,9 +184,14 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_SETTINGS.setColorPressed(THEME_BUTTONS.getColor("pressed"));
 		BP_SETTINGS.setColorHover(THEME_BUTTONS.getColor("hover"));
 		BP_SETTINGS.setColorDeactivated(THEME_BUTTONS.getColor("deactivated"));
+		BP_SETTINGS.setColorForeground(Color.WHITE);
+		BP_SETTINGS.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
+		BP_SETTINGS.setFont(FONT);
+		BP_SETTINGS.setFontSize(20);
 		BP_SETTINGS.turnOnColorFunctions();
 		BP_SETTINGS.setMaximumSize(DIM_BUTTON);
 		BP_SETTINGS.setMinimumSize(DIM_BUTTON);
+		BP_SETTINGS.createComponent();
 		P_CONTENT_2.add(BP_SETTINGS);
 		
 	}
