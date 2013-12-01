@@ -99,15 +99,24 @@ public class WindowManager {
 				WINDOW.setCurrentPanel(CURRENT_PANEL);
 			}
 			
-			WINDOW.setVisible(false);
-			LOG.log("Setting window attributes and turning visible.");
-			WINDOW.setBoundaries(BOUND_HEIGHT, BOUND_WIDTH);
-			WINDOW.updateBoundaries();
+			if (BOUND_HEIGHT != WINDOW.getBoundLength() ||
+				BOUND_WIDTH != WINDOW.getBoundWidth())
+			{
+				LOG.log("Forcing window visiblity to false to update boundaries.");
+				WINDOW.setVisible(false);
+				LOG.log("Updating boundaries.");
+				WINDOW.setBoundaries(BOUND_HEIGHT, BOUND_WIDTH);
+				WINDOW.updateBoundaries();
+			}
+			
+			LOG.log("Applying window attributes.");
 			WINDOW.setTitle(TITLE);
+			LOG.log("Forcing window visibility to true.");
 			WINDOW.setVisible(true);
 			
 			LOG.log("Forcing window to move to centered position.");
 			WINDOW.setLocationRelativeTo(null);
+			LOG.log("Repainting window.");
 			WINDOW.repaint();
 
 	}
