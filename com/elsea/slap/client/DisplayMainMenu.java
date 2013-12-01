@@ -75,7 +75,6 @@ public class DisplayMainMenu extends WindowPanel {
 			@Override
 			public void definition() {
 				
-				//Program.WINDOW_MANAGER.sendProgressFinish();
 				Program.WINDOW_MANAGER.setTrackProgress(true);
 				Program.WINDOW_MANAGER.setNextPanel("MAIN_MENU");
 				Program.WINDOW_MANAGER.setCurrentPanel("MULTIPLAYER");
@@ -129,6 +128,12 @@ public class DisplayMainMenu extends WindowPanel {
 
 			@Override
 			public void definition() {
+				
+				Program.WINDOW_MANAGER.setTrackProgress(true);
+				Program.WINDOW_MANAGER.setNextPanel("MAIN_MENU");
+				Program.WINDOW_MANAGER.setCurrentPanel("TUTORIAL");
+				Program.WINDOW_MANAGER.setTitle("Elsea : Slap : Tutorial");
+				Program.WINDOW_MANAGER.refreshWindow();
 				
 			}
 			

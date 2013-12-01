@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
@@ -26,8 +27,10 @@ public class DisplayLoading extends WindowPanel {
 		this.setTrackProgress(true);
 		
 		setLayout(new BorderLayout(0, 0));
+		setBorder(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBorder(null);
 		panel.setOpaque(false);
 		add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 10));
@@ -35,8 +38,10 @@ public class DisplayLoading extends WindowPanel {
 		LABEL = new JLabel("Loading Slap...");
 		LABEL.setForeground(Color.WHITE);
 		LABEL.setHorizontalAlignment(SwingConstants.CENTER);
+		LABEL.setFont(new Font(Font.DIALOG, Font.PLAIN, 30));
 		panel.add(LABEL, BorderLayout.NORTH);
 		BAR = new JProgressBar();
+		BAR.setBorder(null);
 		panel.add(BAR, BorderLayout.SOUTH);
 		BAR.setForeground(new Color(242, 72, 72));
 
@@ -76,6 +81,9 @@ public class DisplayLoading extends WindowPanel {
 					
 		Program.DISPLAY_MULTIPLAYER = new DisplayMultiplayer();
 		Program.WINDOW_MANAGER.addPanel("MULTIPLAYER", Program.DISPLAY_MULTIPLAYER);
+		
+		Program.DISPLAY_TUTORIAL = new DisplayTutorial();
+		Program.WINDOW_MANAGER.addPanel("TUTORIAL", Program.DISPLAY_TUTORIAL);
 		
 		BAR.setValue(60);
 		

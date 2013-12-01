@@ -13,6 +13,7 @@ public class Program {
 	public static DisplayMainMenu DISPLAY_MAIN_MENU;
 	public static DisplayLoading DISPLAY_LOADING;
 	public static DisplayMultiplayer DISPLAY_MULTIPLAYER;
+	public static DisplayTutorial DISPLAY_TUTORIAL;
 	
 	
 	public Program() {
@@ -36,7 +37,7 @@ public class Program {
 		DISPLAY_LOADING.setNextPanelName("MAIN_MENU");
 		
 		WINDOW_MANAGER.addPanel("LOADING", DISPLAY_LOADING);
-		WINDOW_MANAGER.setBounds(600, 600);
+		WINDOW_MANAGER.setBounds(600, 200);
 		WINDOW_MANAGER.setCurrentPanel("LOADING");
 		WINDOW_MANAGER.refreshWindow();
 		
@@ -46,6 +47,7 @@ public class Program {
 
 				@Override
 				public void run() {
+					
 					DISPLAY_LOADING.loadItems();
 				}
 				
