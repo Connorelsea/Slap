@@ -9,16 +9,12 @@ import javax.swing.ScrollPaneConstants;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
 import javax.swing.JTextPane;
 import java.awt.Font;
 
 public class DisplayMultiplayer extends JPanel {
+	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Create the panel.
-	 */
 	public DisplayMultiplayer() {
 		setBorder(null);
 		setLayout(new BorderLayout(0, 0));
