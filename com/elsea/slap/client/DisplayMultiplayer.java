@@ -60,6 +60,9 @@ public class DisplayMultiplayer extends WindowPanel {
 			@Override
 			public void definition() {
 				
+				Program.WINDOW_MANAGER.sendProgressFinish();
+				Program.WINDOW_MANAGER.refreshWindow();
+				
 			}
 			
 		});

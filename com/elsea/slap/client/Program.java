@@ -1,5 +1,9 @@
 package com.elsea.slap.client;
 
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
+
 public class Program {
 	
 	public static WindowManager WINDOW_MANAGER;
@@ -35,6 +39,30 @@ public class Program {
 		WINDOW_MANAGER.setBounds(600, 600);
 		WINDOW_MANAGER.setCurrentPanel("LOADING");
 		WINDOW_MANAGER.refreshWindow();
+		
+		try {
+			
+			SwingUtilities.invokeAndWait(new Runnable() {
+
+				@Override
+				public void run() {
+					DISPLAY_LOADING.loadItems();
+				}
+				
+			});
+			
+		} catch (InvocationTargetException | InterruptedException e) {
+			
+			e.printStackTrace();
+			
+		} finally {
+			
+			Program.WINDOW_MANAGER.sendProgressFinish();
+			Program.WINDOW_MANAGER.setBounds(1000, 650);
+			Program.WINDOW_MANAGER.setTitle("Elsea : Slap");
+			Program.WINDOW_MANAGER.refreshWindow();
+			
+		}
 		
 	}
 	

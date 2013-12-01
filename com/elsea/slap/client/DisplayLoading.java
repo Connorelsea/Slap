@@ -35,35 +35,13 @@ public class DisplayLoading extends WindowPanel {
 		add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new BorderLayout(0, 10));
 		
-		LABEL = new JLabel("New label");
+		LABEL = new JLabel("Loading Slap...");
 		LABEL.setForeground(Color.WHITE);
 		LABEL.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(LABEL, BorderLayout.NORTH);
 		BAR = new JProgressBar();
 		panel.add(BAR, BorderLayout.SOUTH);
 		BAR.setForeground(new Color(242, 72, 72));
-		
-		try {
-			
-			SwingUtilities.invokeAndWait(new Runnable() {
-
-				@Override
-				public void run() {
-					System.out.println("LOADING");
-					loadItems();
-					System.out.println("DONE LOADING.");
-				}
-				
-			});
-			
-		} catch (InvocationTargetException | InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		Program.WINDOW_MANAGER.sendProgressFinish();
-		Program.WINDOW_MANAGER.setBounds(1000, 650);
-		Program.WINDOW_MANAGER.setTitle("Elsea : Slap");
-		Program.WINDOW_MANAGER.refreshWindow();
 
 	}
 	

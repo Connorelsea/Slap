@@ -22,7 +22,6 @@ public class DisplayMainMenu extends WindowPanel {
 	
 	private Log LOG;
 
-
 	public void build() {
 		
 		LOG = new Log();
@@ -77,6 +76,8 @@ public class DisplayMainMenu extends WindowPanel {
 			public void definition() {
 				
 				//Program.WINDOW_MANAGER.sendProgressFinish();
+				Program.WINDOW_MANAGER.setTrackProgress(true);
+				Program.WINDOW_MANAGER.setNextPanel("MAIN_MENU");
 				Program.WINDOW_MANAGER.setCurrentPanel("MULTIPLAYER");
 				Program.WINDOW_MANAGER.setTitle("Elsea : Slap : Multiplayer");
 				Program.WINDOW_MANAGER.refreshWindow();
@@ -173,7 +174,6 @@ public class DisplayMainMenu extends WindowPanel {
 	}
 	
 	public void paintComponent(Graphics g) {
-		
 		g.drawImage(BACKGROUND, 0, 0, null);
 		
 	}
