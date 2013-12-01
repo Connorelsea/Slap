@@ -22,8 +22,6 @@ public class FontManager {
 	
 	public void loadFont(String name, String url) {
 		
-		// "res/fonts/THIN.ttf"
-		
 		Font FONT;
 		
 		LOG.setSubSection("Loading Font");
@@ -48,11 +46,17 @@ public class FontManager {
 			e.printStackTrace();
 		}
 		
+		FONTS.put(name, FONT);
+		
 		LOG.useSubSection(false);
 	}
 	
 	public Font getFont(String name) {
 		return FONTS.get(name);
+	}
+	
+	public void clearFonts() {
+		FONTS.clear();
 	}
 
 }

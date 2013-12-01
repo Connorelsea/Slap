@@ -24,33 +24,7 @@ public class DisplayMainMenu extends WindowPanel {
 	private Font FONT;
 	
 	private Log LOG;
-	
-	public void loadFont() {
-		
-		LOG.setSubSection("Font");
-		LOG.log("Loading custom font.");
-		URL fontURL = this.getClass().getClassLoader().getResource("res/fonts/THIN.ttf");
-		
-		try {
-			
-			FONT = Font.createFont(Font.TRUETYPE_FONT, fontURL.openStream());
-			LOG.log("Done loading custom font.");
-			
-		} catch (FontFormatException e) {
-			
-			LOG.log("FontFormatException, can't use custom font. Using native font.");
-			FONT = Font.getFont(Font.SANS_SERIF);
-			e.printStackTrace();
-			
-		} catch (IOException e) {
-			
-			LOG.log("FontFormatException, can't use custom font. Using native font.");
-			FONT = Font.getFont(Font.SANS_SERIF);
-			e.printStackTrace();
-		}
-		
-		LOG.useSubSection(false);
-	}
+
 
 	public void build() {
 		
@@ -58,7 +32,7 @@ public class DisplayMainMenu extends WindowPanel {
 		LOG.setSection("DisplayMainMenu");
 		LOG.useSubSection(false);
 		
-		loadFont();
+		FONT = Program.FONT_MANAGER.getFont("THIN");
 		
 		BACKGROUND = Program.RESOURCE_MANAGER.getImage("BACKGROUND_WOOD").getImage();
 		

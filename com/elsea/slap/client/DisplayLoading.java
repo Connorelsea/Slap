@@ -75,12 +75,16 @@ public class DisplayLoading extends WindowPanel {
 		LABEL.setText("Checking for updates...");
 		BAR.setValue(10);
 		
+		LABEL.setText("Loading Fonts...");
+		
+		Program.FONT_MANAGER.loadFont("THIN", "res/fonts/THIN.ttf");
+		
 		//load images
 		LABEL.setText("Loading Image URLs...");
 		
 		Program.RESOURCE_MANAGER.addImage("LOGO", "res/images/LOGO.png");
 		
-		BAR.setValue(20);
+		BAR.setValue(35);
 		
 		LABEL.setText("Loading necessary ImageIcons...");
 		

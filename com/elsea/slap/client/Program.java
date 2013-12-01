@@ -4,6 +4,7 @@ public class Program {
 	
 	public static WindowManager WINDOW_MANAGER;
 	public static ResourceManager RESOURCE_MANAGER;
+	public static FontManager FONT_MANAGER;
 	
 	public static DisplayMainMenu DISPLAY_MAIN_MENU;
 	public static DisplayLoading DISPLAY_LOADING;
@@ -39,6 +40,7 @@ public class Program {
 		
 		WINDOW_MANAGER = new WindowManager();
 		RESOURCE_MANAGER = new ResourceManager();
+		FONT_MANAGER = new FontManager();
 		
 	}
 
