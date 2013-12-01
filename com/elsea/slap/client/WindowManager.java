@@ -99,15 +99,16 @@ public class WindowManager {
 				WINDOW.setCurrentPanel(CURRENT_PANEL);
 			}
 			
+			WINDOW.setVisible(false);
 			LOG.log("Setting window attributes and turning visible.");
 			WINDOW.setBoundaries(BOUND_HEIGHT, BOUND_WIDTH);
 			WINDOW.updateBoundaries();
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
 			
-					LOG.log("Forcing window to move to centered position.");
-					WINDOW.setLocationRelativeTo(null);
-					WINDOW.repaint();
+			LOG.log("Forcing window to move to centered position.");
+			WINDOW.setLocationRelativeTo(null);
+			WINDOW.repaint();
 
 	}
 	
