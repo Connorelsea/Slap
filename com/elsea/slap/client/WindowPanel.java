@@ -12,13 +12,19 @@ import javax.swing.JPanel;
  *  @version Slap 0.1
  *
  */
-public class WindowPanel extends JPanel {
+public abstract class WindowPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private boolean PROGRESS_STATE = false;
 	private boolean TRACK_PROGRESS = false;
 	
 	private String NEXT_PANEL_NAME;
+	
+	public WindowPanel() {
+		build();
+	}
+	
+	public abstract void build();
 	
 	public boolean getTrackProgress() {
 		return TRACK_PROGRESS;

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *  <b>Window.class</b></br>
@@ -26,6 +27,8 @@ public class Window extends JFrame {
 	private int BOUNDS_LENGTH;
 	private int BOUNDS_WIDTH;
 	
+	private WindowPanel CURRENT_PANEL;
+	
 	private Log LOG;
 	
 	public Window() {
@@ -33,6 +36,7 @@ public class Window extends JFrame {
 		LOG.setSection("Window");
 		LOG.useSubSection(false);
 	}
+	
 	
 	/**
 	 *  <b>setBoundaries()</b></br>
@@ -98,12 +102,17 @@ public class Window extends JFrame {
  	 *  
  	 *  @param panel The panel that the window will display.
 	 */
-	public void setCurrentPanel(JPanel panel) {
+	public void setCurrentPanel(WindowPanel panel) {
 		
 		LOG.log("Setting the current panel.");
+		
+		CURRENT_PANEL = panel;
+		
 		createContentPane();
 		this.setContentPane(CONTENT_PANE);
-		this.getContentPane().add(panel, BorderLayout.CENTER);
+		
+		CURRENT_PANEL.build();
+		CONTENT_PANE.add(CURRENT_PANEL, BorderLayout.CENTER);
 		
 	}
 	

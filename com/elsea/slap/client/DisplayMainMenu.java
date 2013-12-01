@@ -52,7 +52,7 @@ public class DisplayMainMenu extends WindowPanel {
 		LOG.useSubSection(false);
 	}
 
-	public DisplayMainMenu() {
+	public void build() {
 		
 		LOG = new Log();
 		LOG.setSection("DisplayMainMenu");
@@ -115,7 +115,7 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_MULTIPLAYER.setColorForeground(Color.WHITE);
 		BP_MULTIPLAYER.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		BP_MULTIPLAYER.setFont(FONT);
-		BP_MULTIPLAYER.setFontSize(20);
+		BP_MULTIPLAYER.setFontSize(22);
 		BP_MULTIPLAYER.turnOnColorFunctions();
 		BP_MULTIPLAYER.setMaximumSize(DIM_BUTTON);
 		BP_MULTIPLAYER.setMinimumSize(DIM_BUTTON);
@@ -139,7 +139,7 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_STATS.setColorForeground(Color.WHITE);
 		BP_STATS.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		BP_STATS.setFont(FONT);
-		BP_STATS.setFontSize(20);
+		BP_STATS.setFontSize(22);
 		BP_STATS.turnOnColorFunctions();
 		BP_STATS.setMaximumSize(DIM_BUTTON);
 		BP_STATS.setMinimumSize(DIM_BUTTON);
@@ -163,7 +163,7 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_TUTORIAL.setColorForeground(Color.WHITE);
 		BP_TUTORIAL.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		BP_TUTORIAL.setFont(FONT);
-		BP_TUTORIAL.setFontSize(20);
+		BP_TUTORIAL.setFontSize(22);
 		BP_TUTORIAL.turnOnColorFunctions();
 		BP_TUTORIAL.setMaximumSize(DIM_BUTTON);
 		BP_TUTORIAL.setMinimumSize(DIM_BUTTON);
@@ -187,7 +187,7 @@ public class DisplayMainMenu extends WindowPanel {
 		BP_SETTINGS.setColorForeground(Color.WHITE);
 		BP_SETTINGS.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2, Color.WHITE));
 		BP_SETTINGS.setFont(FONT);
-		BP_SETTINGS.setFontSize(20);
+		BP_SETTINGS.setFontSize(22);
 		BP_SETTINGS.turnOnColorFunctions();
 		BP_SETTINGS.setMaximumSize(DIM_BUTTON);
 		BP_SETTINGS.setMinimumSize(DIM_BUTTON);

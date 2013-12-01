@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
@@ -19,7 +20,7 @@ public class DisplayLoading extends WindowPanel {
 	
 	private ImageIcon BACKGROUND;
 	
-	public DisplayLoading() {
+	public void build() {
 		
 		Program.RESOURCE_MANAGER.addImage("BACKGROUND_WOOD", "res/images/WOOD.jpg");
 		Program.RESOURCE_MANAGER.loadImage("BACKGROUND_WOOD");
@@ -42,14 +43,29 @@ public class DisplayLoading extends WindowPanel {
 		panel.add(BAR, BorderLayout.SOUTH);
 		BAR.setForeground(new Color(242, 72, 72));
 		
-		SwingUtilities.invokeLater(new Runnable() {
-
-			@Override
-			public void run() {
-				loadItems();
-			}
+		try {
 			
-		});
+			SwingUtilities.invokeAndWait(new Runnable() {
+
+				@Override
+				public void run() {
+					System.out.println("LOADING");
+					loadItems();
+					System.out.println("DONE LOADING.");
+				}
+				
+			});
+			
+		} catch (InvocationTargetException | InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		this.repaint();
+		
+		Program.WINDOW_MANAGER.sendProgressFinish();
+		Program.WINDOW_MANAGER.setBounds(1000, 650);
+		Program.WINDOW_MANAGER.setTitle("Elsea : Slap");
+		Program.WINDOW_MANAGER.refreshWindow();
 
 	}
 	
@@ -88,11 +104,6 @@ public class DisplayLoading extends WindowPanel {
 		//finalize
 		LABEL.setText("Finalizing...");
 		BAR.setValue(80);
-		
-		Program.WINDOW_MANAGER.sendProgressFinish();
-		Program.WINDOW_MANAGER.setBounds(1000, 650);
-		Program.WINDOW_MANAGER.setTitle("Elsea : Slap");
-		Program.WINDOW_MANAGER.refreshWindow();
 		
 	}
 	

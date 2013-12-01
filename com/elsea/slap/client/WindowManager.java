@@ -105,14 +105,10 @@ public class WindowManager {
 			WINDOW.setTitle(TITLE);
 			WINDOW.setVisible(true);
 			
-			SwingUtilities.invokeLater(new Runnable() {
-				@Override
-				public void run() {
 					LOG.log("Forcing window to move to centered position.");
 					WINDOW.setLocationRelativeTo(null);
-				}
-			});
-		
+					WINDOW.repaint();
+
 	}
 	
 	/**
