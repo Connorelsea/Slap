@@ -78,26 +78,26 @@ public class WindowManager {
 	 */
 	public void refreshWindow() {
 		
-			WINDOW.updateBoundaries();
+		LOG.setSubSection("Refresh");
 			
-			if (CURRENT_PANEL != null) {
+		if (CURRENT_PANEL != null) {
+			
+			WINDOW.repaint();
+			LOG.log("Current panel exists. Setting up information.");
 				
-				LOG.log("Current panel exists. Setting up information.");
+			if (CURRENT_PANEL.getTrackProgress() == true) {
 				
-				if (CURRENT_PANEL.getTrackProgress() == true) {
-					
-					LOG.log("Progress tracking turned on, setting next panel.");
-					setTrackProgress(true);
-					setNextPanel(CURRENT_PANEL.getNextPanelName());
-					
-				} else {
-					LOG.log("Progress tracking turned off.");
-					setTrackProgress(false);
-				}
+				LOG.log("Progress tracking turned on, setting next panel.");
+				setTrackProgress(true);
+				setNextPanel(CURRENT_PANEL.getNextPanelName());
 				
-				LOG.log("Setting current panel.");
-				WINDOW.setCurrentPanel(CURRENT_PANEL);
+			} else {
+				LOG.log("Progress tracking turned off.");
+				setTrackProgress(false);
 			}
+				
+			LOG.log("Setting current panel.");
+			WINDOW.setCurrentPanel(CURRENT_PANEL);
 			
 			if (BOUND_HEIGHT != WINDOW.getBoundLength() ||
 				BOUND_WIDTH != WINDOW.getBoundWidth())
@@ -105,20 +105,33 @@ public class WindowManager {
 				LOG.log("Forcing window visiblity to false to update boundaries.");
 				WINDOW.setVisible(false);
 				LOG.log("Updating boundaries.");
-				WINDOW.setBoundaries(BOUND_HEIGHT, BOUND_WIDTH);
-				WINDOW.updateBoundaries();
+				WINDOW.setBoundaries(BOUND_HEIGHT, BOUND_WIDTH);	
+
+				try {	
+					SwingUtilities.invokeAndWait(new Runnable() {
+						@Override
+						public void run() {
+							WINDOW.updateBoundaries();
+						}	
+					});
+				} catch (Exception ex) { ex.printStackTrace(); }
 			}
-			
+					
 			LOG.log("Applying window attributes.");
 			WINDOW.setTitle(TITLE);
 			LOG.log("Forcing window visibility to true.");
 			WINDOW.setVisible(true);
-			
+					
 			LOG.log("Forcing window to move to centered position.");
 			WINDOW.setLocationRelativeTo(null);
 			LOG.log("Repainting window.");
 			WINDOW.repaint();
-
+				
+		} else {
+			LOG.log("No current panel, window cannot be refreshed.");
+		}
+		
+		LOG.useSubSection(false);
 	}
 	
 	/**

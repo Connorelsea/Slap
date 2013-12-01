@@ -5,12 +5,9 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.lang.reflect.InvocationTargetException;
-
 import javax.swing.JProgressBar;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 
 public class DisplayLoading extends WindowPanel {
 	private static final long serialVersionUID = 1L;
@@ -76,7 +73,7 @@ public class DisplayLoading extends WindowPanel {
 		
 		Program.DISPLAY_MAIN_MENU = new DisplayMainMenu();
 		Program.WINDOW_MANAGER.addPanel("MAIN_MENU", Program.DISPLAY_MAIN_MENU);
-		
+					
 		Program.DISPLAY_MULTIPLAYER = new DisplayMultiplayer();
 		Program.WINDOW_MANAGER.addPanel("MULTIPLAYER", Program.DISPLAY_MULTIPLAYER);
 		
