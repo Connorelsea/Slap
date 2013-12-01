@@ -76,6 +76,8 @@ public class DisplayLoading extends WindowPanel {
 		LABEL.setText("Loading Fonts...");
 		
 		Program.FONT_MANAGER.loadFont("THIN", "res/fonts/THIN.ttf");
+		Program.FONT_MANAGER.loadFont("ALTE", "res/fonts/ALTE.ttf");
+		Program.FONT_MANAGER.loadFont("ALTE_BOLD", "res/fonts/ALTE_BOLD.ttf");
 		
 		//load images
 		LABEL.setText("Loading Image URLs...");
