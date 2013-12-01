@@ -10,6 +10,14 @@ public class Program {
 	
 	public Program() {
 		
+		System.out.println(
+				"\n" +
+				"Elsea Labs 2013-2014\n" + 
+				"BSD 3-Clause License, Open Source\n" +
+				
+				"\nWork until your idols are your rivals\n\n"
+			);
+		
 		loadHelpers();
 		initiateProgram();
 		
