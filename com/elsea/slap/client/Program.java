@@ -8,6 +8,8 @@ public class Program {
 	
 	public static DisplayMainMenu DISPLAY_MAIN_MENU;
 	public static DisplayLoading DISPLAY_LOADING;
+	public static DisplayMultiplayer DISPLAY_MULTIPLAYER;
+	
 	
 	public Program() {
 		

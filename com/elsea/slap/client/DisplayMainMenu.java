@@ -79,6 +79,11 @@ public class DisplayMainMenu extends WindowPanel {
 			@Override
 			public void definition() {
 				
+				//Program.WINDOW_MANAGER.sendProgressFinish();
+				Program.WINDOW_MANAGER.setCurrentPanel("MULTIPLAYER");
+				Program.WINDOW_MANAGER.setTitle("Elsea : Slap : Multiplayer");
+				Program.WINDOW_MANAGER.refreshWindow();
+				
 			}
 			
 		});

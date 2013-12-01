@@ -60,8 +60,6 @@ public class DisplayLoading extends WindowPanel {
 			e.printStackTrace();
 		}
 		
-		this.repaint();
-		
 		Program.WINDOW_MANAGER.sendProgressFinish();
 		Program.WINDOW_MANAGER.setBounds(1000, 650);
 		Program.WINDOW_MANAGER.setTitle("Elsea : Slap");
@@ -98,6 +96,9 @@ public class DisplayLoading extends WindowPanel {
 		
 		Program.DISPLAY_MAIN_MENU = new DisplayMainMenu();
 		Program.WINDOW_MANAGER.addPanel("MAIN_MENU", Program.DISPLAY_MAIN_MENU);
+		
+		Program.DISPLAY_MULTIPLAYER = new DisplayMultiplayer();
+		Program.WINDOW_MANAGER.addPanel("MULTIPLAYER", Program.DISPLAY_MULTIPLAYER);
 		
 		BAR.setValue(60);
 		

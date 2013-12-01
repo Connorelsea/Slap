@@ -12,10 +12,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JTextPane;
 import java.awt.Font;
 
-public class DisplayMultiplayer extends JPanel {
+public class DisplayMultiplayer extends WindowPanel {
 	private static final long serialVersionUID = 1L;
 
-	public DisplayMultiplayer() {
+	public void build() {
 		setBorder(null);
 		setLayout(new BorderLayout(0, 0));
 		
@@ -27,7 +27,7 @@ public class DisplayMultiplayer extends JPanel {
 		P_TOP.setLayout(new BorderLayout(0, 0));
 		
 		JLabel L_TITLE = new JLabel("  Multiplayer");
-		L_TITLE.setFont(new Font("Dialog", Font.PLAIN, 14));
+		L_TITLE.setFont(new Font(Program.FONT_MANAGER.getFont("THIN").getName(), Font.PLAIN, 14));
 		L_TITLE.setForeground(Color.WHITE);
 		P_TOP.add(L_TITLE);
 		
@@ -43,6 +43,7 @@ public class DisplayMultiplayer extends JPanel {
 		P_BOTTOM.add(BACK_BP_HERE, BorderLayout.WEST);
 		
 		JLabel L_STATUS = new JLabel("Connecting...");
+		L_STATUS.setFont(new Font(Program.FONT_MANAGER.getFont("THIN").getName(), Font.PLAIN, 12));
 		L_STATUS.setForeground(Color.WHITE);
 		P_BOTTOM.add(L_STATUS, BorderLayout.EAST);
 		
@@ -82,13 +83,16 @@ public class DisplayMultiplayer extends JPanel {
 		P_IR_TOP.setLayout(new BoxLayout(P_IR_TOP, BoxLayout.Y_AXIS));
 		
 		JLabel L_NAME = new JLabel("Server Name");
+		L_NAME.setFont(new Font(Program.FONT_MANAGER.getFont("THIN").getName(), Font.PLAIN, 20));
 		L_NAME.setFont(new Font("Dialog", Font.PLAIN, 20));
 		P_IR_TOP.add(L_NAME);
 		
 		JLabel L_IP = new JLabel("New label");
+		L_IP.setFont(new Font(Program.FONT_MANAGER.getFont("THIN").getName(), Font.PLAIN, 14));
 		P_IR_TOP.add(L_IP);
 		
 		JTextPane TP_META = new JTextPane();
+		TP_META.setFont(new Font(Program.FONT_MANAGER.getFont("THIN").getName(), Font.PLAIN, 14));
 		TP_META.setEditable(false);
 		TP_META.setBorder(null);
 		TP_META.setBackground(Color.LIGHT_GRAY);
