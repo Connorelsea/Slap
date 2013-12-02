@@ -8,8 +8,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JTextArea;
 
 public class DisplayTutorial extends WindowPanel {
+	public DisplayTutorial() {
+	}
 	private static final long serialVersionUID = 1L;
 
 	public void build() {
@@ -71,8 +76,28 @@ public class DisplayTutorial extends WindowPanel {
 			}
 			
 		};
+		P_CENTER.setBorder(null);
 		P_CENTER.setOpaque(false);
 		add(P_CENTER, BorderLayout.CENTER);
+		P_CENTER.setLayout(new BorderLayout(0, 0));
+		
+		JScrollPane P_SCROLL = new JScrollPane();
+		P_SCROLL.setBorder(null);
+		P_SCROLL.setOpaque(false);
+		P_SCROLL.getViewport().setOpaque(false);
+		P_SCROLL.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		P_CENTER.add(P_SCROLL, BorderLayout.CENTER);
+		
+		JTextArea TEXT_AREA = new JTextArea();
+		TEXT_AREA.setOpaque(false);
+		TEXT_AREA.setBorder(null);
+		TEXT_AREA.setForeground(Color.WHITE);
+		TEXT_AREA.setWrapStyleWord(true);
+		TEXT_AREA.setFont(new Font(Program.FONT_MANAGER.getFont("ALTE").getName(), Font.PLAIN, 20));
+		P_SCROLL.setViewportView(TEXT_AREA);
+		
+		TEXT_AREA.setText("This is a testing string. This is a testing string. This is a testing string. This is a testing string. This is a testing string.");
+		
 
 	}
 
