@@ -13,8 +13,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.JTextArea;
 
 public class DisplayTutorial extends WindowPanel {
-	public DisplayTutorial() {
-	}
+
 	private static final long serialVersionUID = 1L;
 
 	public void build() {
@@ -96,7 +95,7 @@ public class DisplayTutorial extends WindowPanel {
 		TEXT_AREA.setFont(new Font(Program.FONT_MANAGER.getFont("ALTE").getName(), Font.PLAIN, 20));
 		P_SCROLL.setViewportView(TEXT_AREA);
 		
-		TEXT_AREA.setText("This is a testing string. This is a testing string. This is a testing string. This is a testing string. This is a testing string.");
+		TEXT_AREA.setText("This is a testing string. This is a testing string.");
 		
 
 	}

@@ -180,7 +180,6 @@ public class DisplayMainMenu extends WindowPanel {
 	
 	public void paintComponent(Graphics g) {
 		g.drawImage(BACKGROUND, 0, 0, null);
-		
 	}
 
 }
